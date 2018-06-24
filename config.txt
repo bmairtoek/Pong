@@ -1,0 +1,27 @@
+#Here you can edit some parameters before game.
+#Be wary though not to make mistakes in this file,
+#because in case of en error whole file may be
+#replaced with the original one (on user demand).
+#Remember that spaces should be left where they are.
+#Each paramter must be bigger than 0 (except colours).
+
+# width of the main window (min 700)
+WINDOWWIDTH = 800
+# high of the main window (min 300)
+WINDOWHEIGHT = 600
+# thickness of the arena line
+LINETHICKNESS = 8
+# length of paddles
+PADDLESIZE = 50
+# distance between paddles and edges of the arena
+PADDLEOFFSET = 70
+# thickness of paddles
+PADDLETHICKNESS = 8
+# size of the ball
+BALLSIZE = 8
+# speed at which the games startes (recommended values: 1 - 4)
+STARTSPEED = 2
+# colour of background
+BGCOLOUR = (0,0,0)
+# colour of arena elements
+FGCOLOUR = (255,255,255)
