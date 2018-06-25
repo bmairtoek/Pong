@@ -370,6 +370,24 @@ def game_menu():
         FPSCLOCK.tick(15)
 
 
+# displays who won this match
+def showWhoWon(who):
+    if who == 0:
+        winner = 'Left Player'
+    else:
+        winner = 'Right Player'
+    resultSurf1 = pygame.font.Font('freesansbold.ttf', 40).render(winner + ' Won', True, FGCOLOUR)
+    resultRect1 = resultSurf1.get_rect()
+    resultRect1.center = (WINDOWWIDTH/2, WINDOWHEIGHT/2)
+    DISPLAYSURF.blit(resultSurf1, resultRect1)
+    resultSurf2 = BASICFONT.render('press Q to end game', True, FGCOLOUR)
+    resultRect2 = resultSurf2.get_rect()
+    resultRect2.midtop = resultRect1.midbottom
+    DISPLAYSURF.blit(resultSurf2, resultRect2)
+    pygame.display.update()
+   # pygame.time.Clock().tick(FPS)
+
+
 
 # Main function
 def main():
@@ -441,7 +459,8 @@ def main():
                     gameQuit()
                 # pause the game
                 elif event.key == K_SPACE:
-                    pause = not pause
+                    if score[0] != 21 or score[1] != 21:
+                        pause = not pause
                 # pause the game
                 elif event.key == K_r:
                     score = [0,0]
@@ -467,6 +486,15 @@ def main():
                 elif event.key == K_9:
                     ballDirX, ballDirY = changeSpeed(12, ballDirX, ballDirY)
         if pause:
+            continue
+        # when someone scores 21 points
+        if score[0] == 21:
+            showWhoWon(0)
+            pause = True
+            continue
+        if score[1] == 21:
+            showWhoWon(1)
+            pause = True
             continue
         keys = pygame.key.get_pressed()
         if keys[K_UP] and MODE == 1:
